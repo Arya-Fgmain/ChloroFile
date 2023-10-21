@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.27.1)
 
 add_compile_options(-std=c++11 -stdlib=libc++)
 
-project(proj VERSION 1.0)
+project(proj)
 
 add_executable(${PROJECT_NAME} main.cpp)
 
