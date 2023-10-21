@@ -34,5 +34,22 @@ int main()
 
     std::cout << q.size() << '\n';
 
+    q.push_back("hello");
+
+    q.push_back("world");
+
+    std::cout << q.front() << '\n'; // world
+
+    std::cout << q.empty() << '\n';
+
+    std::cout << q.pop_front() << '\n';
+
+    std::cout << q.size() << '\n';
+
+    q.pop_front();
+
+    std::cout << q.empty();
+
+
     return 0;
 }
