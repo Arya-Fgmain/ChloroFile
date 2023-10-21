@@ -1,0 +1,4 @@
+asio-1.18.0
+.vscode
+.DS_Store
+**/out/build
