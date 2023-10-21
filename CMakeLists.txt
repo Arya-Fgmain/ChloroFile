@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.27.1)
 
-add_compile_options(-std=c++11 -stdlib=libc++)
+add_compile_options(-std=c++17 -stdlib=libc++)
 
 project(proj)
 
