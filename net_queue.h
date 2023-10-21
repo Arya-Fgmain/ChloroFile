@@ -1,12 +1,11 @@
 #include <deque>
 #include <mutex>
 
-
 class NetQueue
 {
     private:
         std::deque<int> queue;
-        std::mutex mux;
+        // std::mutex mux;
 
     public:
         NetQueue()
@@ -19,42 +18,42 @@ class NetQueue
 
         int size() const
         {
-            std::scoped_lock lock(mux);
+            // std::scoped_lock lock(mux);
             return queue.size();
         }
 
         bool empty() const
         {
-            std::scoped_lock lock(mux);
+            // std::scoped_lock lock(mux);
             return queue.empty();
         }
 
         int &front()
         {
-            std::scoped_lock lock(mux);
+            // std::scoped_lock lock(mux);
             return queue.front();
         }
 
         int &back()
         {
-            std::scoped_lock lock(mux);
+            // std::scoped_lock lock(mux);
             return queue.back();
         }
 
-        // void push_front(int &msg)
-        // {
-        //     std::scoped_lock lock(mux);
-        //     queue.emplace_front(
-        //         std::move(msg)
-        //     );
-        // }
+        void push_front(int &msg)
+        {
+            // std::scoped_lock lock(mux);
+            queue.emplace_front(
+                std::move(msg)
+            );
+        }
 
-        // void push_back(int &msg)
-        // {
-        //     std::scoped_lock lock(mux);
-        //     queue.emplace_back(
-        //         std::move(msg)
-        //     );
-        // }
+        void push_back(int &msg)
+        {
+            // std::scoped_lock lock(mux);
+            queue.emplace_back(
+                std::move(msg)
+            );
+        }
 
 };

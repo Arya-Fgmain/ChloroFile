@@ -26,27 +26,13 @@ void assertState(asio::error_code ec, std::string_view errMessage, std::string_v
     }
 }
 
+#include "net_queue.h"
+
 int main()
-{
-    
+{   
+    NetQueue q;
 
-    asio::error_code ec;
-
-    asio::io_context context;
-
-    asio::io_context::work work(context);
-
-    std::thread thContext( [&context] () {context.run();} );
-
-    asio::ip::tcp::socket socket(context);
-
-    asio::ip::tcp::endpoint endpoint(asio::ip::make_address("93.184.216.34", ec), 80);
-
-    std::cout << "Everything is cool\n";
-
-    socket.close();
-
-    context.stop();
+    std::cout << q.size() << '\n';
 
     return 0;
 }
