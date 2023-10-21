@@ -3,6 +3,7 @@
 #include <cstdint>
 #include <chrono>
 #include <iostream>
+#include <memory> // for using unique pointers
 
 
 #define ASIO_STANDALONE
@@ -26,29 +27,10 @@ void assertState(asio::error_code ec, std::string_view errMessage, std::string_v
     }
 }
 
-#include "net_queue.h"
+#include "queue.h"
 
 int main()
 {   
-    NetQueue q;
-
-    std::cout << q.size() << '\n';
-
-    q.push_back("hello");
-
-    q.push_back("world");
-
-    std::cout << q.front() << '\n'; // world
-
-    std::cout << q.empty() << '\n';
-
-    std::cout << q.pop_front() << '\n';
-
-    std::cout << q.size() << '\n';
-
-    q.pop_front();
-
-    std::cout << q.empty();
 
 
     return 0;
