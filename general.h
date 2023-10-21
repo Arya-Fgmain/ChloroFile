@@ -14,8 +14,6 @@
 #include <thread>
 #include <vector>
 
-
-
 // asio-related libraries
 
 #define ASIO_STANDALONE

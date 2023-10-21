@@ -9,45 +9,33 @@ class Client;
 
 class Server
 {
-
     std::vector<Client> clients;
 
-    std::shared_ptr<asio::io_context> context;
-    
-    asio::io_context::work work;
+    // order of declaration is important -- it is also the order of initialization
+	asio::io_context asioCon; // shared amongst all clients
+	std::thread thContext;
+			
+	// these things need an asio context --> gets sockets of connected clients
+	asio::ip::tcp::acceptor acp;
 
-    asio::ip::tcp::acceptor acp;
-
-    
-    Server() : work(*context), acp(
-        *context, 
-        asio::ip::tcp::endpoint(asio::ip::tcp::v4(), 10000)
-        ) // -> acceptor needs an endpoint & port later
+    Server() : acp(asioCon, asio::ip::tcp::endpoint(asio::ip::tcp::v4(), 80))
     {
-        /*
-        upon initialization
-        give 'fake' work to context
-        associate socket with context
-        */
-
-        // start the context in its own thread
-        thContext = {
-            [*context] ()
-            {
-                (*context).run();
+        thContext = std::thread(
+            [&] () {
+                asioCon.run();
             }
-        }
-    };
+        );
+    }
 
     void AcceptConnections()
     {
-        acceptor.async_accept(
+        acp.async_accept(
             [this] (asio::error_code error, asio::ip::tcp::socket socket)
             {
                 if (!error)
                 { // if no errors found
                     // add to list of current active clients
-                    clients.push_back(clients);
+                    // clients.push_back(new client socket);
                 }
                 else
                 {
@@ -55,7 +43,7 @@ class Server
                     std::cout << error.message() << '\n';
                 }
 
-                AcceptConnection(); // async-recursively call the function again
+                AcceptConnections(); // async-recursively call the function again
             }
         );
     }
@@ -69,8 +57,8 @@ class Server
     }
 
     virtual ~Server() {
-        acceptor.close();
-        context.stop();
+        acp.close();
+        asioCon.stop();
     };
 
 };
