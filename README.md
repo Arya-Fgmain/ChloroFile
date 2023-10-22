@@ -23,6 +23,8 @@ To get started with ChloroFile, you can either access another myChloro or log in
 2. Click on "Add" to add new files or drag-and-drop stickers on the screen.
 3. To access files shared by others, click "Access another myChloro" and enter the IP address.
 
+   Needs CMake and Boost Asio / Regular Asio.
+
 ## Authors
 
 <b> Arya Faghihy </b>
