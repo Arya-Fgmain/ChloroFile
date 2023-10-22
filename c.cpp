@@ -16,6 +16,9 @@ int main()
     std::cout << "Client started.\n";
     Client c;
 
+    using namespace std::chrono_literals;
+    std::this_thread::sleep_for(10000ms);
+
     if (c.Connect())
     {
         c.Reading();

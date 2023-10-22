@@ -58,38 +58,72 @@ class Client
             std::cout << "connection failed " << ec.message() << '\n';
             return false;
         }
+        
     }
+
+    // void Reading()
+    // {
+    //     std::vector<char> message(5 * 1024);
+
+    //     std::cout << "reading begun\n";
+    //     socket.async_read_some(
+    //         asio::buffer(message.data(), message.size()),
+    //         [&] (asio::error_code ec, std::size_t bytesRead) {
+    //             if (!ec)
+    //             {
+    //                 std::cout << bytesRead << " bytes read\n";
+    //                 for (char c : message)
+    //                     std::cout << c;
+    //                 std::cout << '\n';
+
+    //                 Reading();
+                    
+    //             }
+    //             else if (ec == asio::error::eof)
+    //             {
+    //                 std::cout << "connection closed by server.\n";
+                    
+    //             }
+    //             else
+    //             {
+    //                 std::cout << "error reading " << ec.message() << '\n';
+    //             }                
+    //         }
+    //     );
+    // }
 
     void Reading()
-    {
-        std::vector<char> message(5 * 1024);
+{
+    std::vector<char> message(1024); // Adjust the buffer size as needed
 
-        std::cout << "reading begun\n";
-        socket.async_read_some(
-            asio::buffer(message.data(), message.size()),
-            [&] (asio::error_code ec, std::size_t bytesRead) {
-                if (!ec)
-                {
-                    std::cout << bytesRead << " bytes read\n";
-                    for (char c : message)
-                        std::cout << c;
-                    std::cout << '\n';
+    std::cout << "Reading begun" << std::endl;
 
-                    Reading();
-                    
-                }
-                else if (ec == asio::error::eof)
+    socket.async_read_some(
+        asio::buffer(message.data(), message.size()),
+        [&](asio::error_code ec, std::size_t bytesRead) {
+            if (!ec)
+            {
+                std::cout << "Received " << bytesRead << " bytes: ";
+                for (std::size_t i = 0; i < bytesRead; ++i)
                 {
-                    std::cout << "connection closed by server.\n";
-                    
+                    std::cout << message[i];
                 }
-                else
-                {
-                    std::cout << "error reading " << ec.message() << '\n';
-                }                
+                std::cout << std::endl;
+
+                // Continue reading for more data
+                Reading();
             }
-        );
-    }
+            else if (ec == asio::error::eof)
+            {
+                std::cout << "Connection closed by server." << std::endl;
+            }
+            else
+            {
+                std::cout << "Error reading: " << ec.message() << std::endl;
+            }
+        }
+    );
+}
 
     // void KeepUpdating()
     // {

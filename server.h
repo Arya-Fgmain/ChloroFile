@@ -103,9 +103,12 @@ class Server
             {
                 asio::error_code ec;
 
+                std::vector<char> toSend(msg.size());
+                std::memcpy(toSend.data(), msg.data(), msg.size());
+
                 asio::write(
                     clients[id].socket,
-                    asio::buffer(msg),
+                    asio::buffer(toSend.data(), toSend.size()),
                     ec
                 );
 
