@@ -61,37 +61,6 @@ class Client
         
     }
 
-    // void Reading()
-    // {
-    //     std::vector<char> message(5 * 1024);
-
-    //     std::cout << "reading begun\n";
-    //     socket.async_read_some(
-    //         asio::buffer(message.data(), message.size()),
-    //         [&] (asio::error_code ec, std::size_t bytesRead) {
-    //             if (!ec)
-    //             {
-    //                 std::cout << bytesRead << " bytes read\n";
-    //                 for (char c : message)
-    //                     std::cout << c;
-    //                 std::cout << '\n';
-
-    //                 Reading();
-                    
-    //             }
-    //             else if (ec == asio::error::eof)
-    //             {
-    //                 std::cout << "connection closed by server.\n";
-                    
-    //             }
-    //             else
-    //             {
-    //                 std::cout << "error reading " << ec.message() << '\n';
-    //             }                
-    //         }
-    //     );
-    // }
-
     void Reading()
 {
     std::vector<char> message(1024); // Adjust the buffer size as needed
@@ -112,12 +81,7 @@ class Client
 
                 // Continue reading for more data
                 Reading();
-            }
-            else if (ec == asio::error::eof)
-            {
-                std::cout << "Connection closed by server." << std::endl;
-            }
-            else
+            } else
             {
                 std::cout << "Error reading: " << ec.message() << std::endl;
             }
@@ -125,13 +89,6 @@ class Client
     );
 }
 
-    // void KeepUpdating()
-    // {
-    //     while (1)
-    //     {
-    //         std::cout << "...";
-    //     }
-    // }
 
     virtual ~Client() {
         socket.close();

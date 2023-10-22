@@ -4,6 +4,11 @@ add_compile_options(-std=c++17 -stdlib=libc++)
 
 project(chlorofile)
 
+#[[
+some parts are commented out for building main.cpp, that's going to be the main for the 
+next version
+]]
+
 # add_executable(${PROJECT_NAME} main.cpp)
 add_executable(client c.cpp)
 add_executable(server s.cpp)

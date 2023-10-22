@@ -14,12 +14,6 @@
 #include "queue.h"
 #include "connection.h"
 
-// to store the clients and their respective IDs (to use later)
-// struct cliSocket {
-//     int index;
-//     asio::ip::tcp::socket &socket;
-// };
-
 
 class Server
 {
@@ -123,12 +117,6 @@ class Server
             
         }
     }
-
-    // void Broadcast()
-    // {
-    //     for (Client c : clients)
-    //         c.push_front(msg);
-    // }
 
     virtual ~Server() {
         
