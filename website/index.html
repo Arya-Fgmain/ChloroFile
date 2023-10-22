@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Proj</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Proj</h1>
+        <p>A simple way to share files with people.</p>
+    </header>
+    <main>
+        <section id="get-started">
+            <h2>Get Started</h2>
+            <p>Start sharing files today.</p>
+            <br>
+            <a href="ipaddress.html">Access another myProj</a>
+            <p>or</p>
+            <a href="shop.html">Log into your myProj</a>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 ProjTeam</p>
+
+        <!-- Privacy Policy and Made For etc. -->
+        <div class="social-icons">
+            <a href="policy.html" target="_blank">
+                <p>Privacy Policy</p>
+            </a>
+            <a href="https://www.eventbrite.ca/e/fall-hacks-2023-tickets-735239048787?aff=oddtdtcreator" target="_blank">
+                <p>Fall Hacks 2023</p>
+            </a>
+        </div>
+        
+        <!-- "Made By" section with icons -->
+        <div class="made-by">
+            <p><u>Made By:</u></p>
+            <div class="maker">
+                <br>
+                <p> Arya Faghihy </p>
+                <a href="https://github.com/Arya-Fgmain" target="_blank">
+                    <img src="img/github.png" alt="AryaGitHub" width="20" height="20">
+                </a>
+                <a href="https://www.linkedin.com/in/aryafaghihy/" target="_blank">
+                    <img src="img/linkedin.png" alt="AryaLinkedIn" width="20" height="20">
+                </a>
+                &nbsp;
+                <p>Saarang Anand</p>
+                <a href="https://github.com/saaranganand" target="_blank">
+                    <img src="img/github.png" alt="SarnGitHub" width="20" height="20">
+                </a>
+                <a href="https://www.linkedin.com/in/saaranganand/" target="_blank">
+                    <img src="img/linkedin.png" alt="SarnLinkedIn" width="20" height="20">
+                </a>
+            </div>
+        </div>
+    </footer>
+    <img id="drag1" src="img/fileleaf.png" draggable="true" ondragstart="drag(event)" width="200" height="200" style="position: absolute; top: 0; left: 50px;">
+    <script>
+        window.onload = function() {
+            var img = document.getElementById('drag1');
+            var container = document.body;
+            var active = false;
+            var currentX;
+            var currentY;
+            var initialX;
+            var initialY;
+            var xOffset = 0;
+            var yOffset = 0;
+        
+            // Update the initial position of the image
+            initialX = img.offsetLeft;
+            initialY = img.offsetTop;
+        
+            container.addEventListener('mousedown', function(e) {
+                if (e.target === img) {
+                    initialX = e.clientX - xOffset;
+                    initialY = e.clientY - yOffset;
+        
+                    if (e.target === img) {
+                        active = true;
+                    }
+                }
+            });
+        
+            container.addEventListener('mouseup', function() {
+                initialX = currentX;
+                initialY = currentY;
+        
+                active = false;
+            });
+        
+            container.addEventListener('mousemove', function(e) {
+                if (active) {
+                    e.preventDefault();
+        
+                    currentX = e.clientX - initialX;
+                    currentY = e.clientY - initialY;
+        
+                    xOffset = currentX;
+                    yOffset = currentY;
+        
+                    setTranslate(currentX, currentY, img);
+                }
+            });
+        
+            function setTranslate(xPos, yPos, el) {
+                el.style.transform = 'translate3d(' + xPos + 'px, ' + yPos + 'px, 0)';
+            }
+        };
+        </script>                                      
+</body>
+</html>
