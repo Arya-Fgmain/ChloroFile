@@ -1,7 +1,7 @@
 # ChloroFile
 <img src="website/img/fileleaf.png" alt="Your Image" width="150" height="200" />
 
-Welcome to ChloroFile, a simple way to share files with people by exposing your vulnerable IP address for the world to see (patent pending). ChloroFile allows you to manage your files and share them seamlessly (real).
+Welcome to <i> ChloroFile</i>, a simple way to share files with people by exposing your vulnerable IP address for the world to see (patent pending). ChloroFile allows you to manage your files and share them seamlessly (real).
 
 ## Getting Started
 
