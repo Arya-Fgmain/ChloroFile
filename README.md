@@ -25,11 +25,13 @@ To get started with ChloroFile, you can either access another myChloro or log in
 
 ## Authors
 
-- [Arya Faghihy](https://github.com/Arya-Fgmain)
-- [Saarang Anand](https://github.com/saaranganand)
+<b> Arya Faghihy </b>
+
+<b> Saarang Anand </b>
 
 ## Built With
 
+- C++
 - HTML
 - CSS
 - JavaScript
