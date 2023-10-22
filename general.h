@@ -14,14 +14,14 @@
 #include <thread>
 #include <vector>
 
-// asio-related libraries
+// // asio-related libraries
 
-#define ASIO_STANDALONE
+// #define ASIO_STANDALONE
 
-#include "asio.hpp"
-// memory movement
-#include "asio/ts/buffer.hpp"
-// network comms
-#include "asio/ts/internet.hpp"
+// #include "asio.hpp"
+// // memory movement
+// #include "asio/ts/buffer.hpp"
+// // network comms
+// #include "asio/ts/internet.hpp"
 
 #endif

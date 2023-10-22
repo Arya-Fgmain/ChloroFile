@@ -1,6 +1,14 @@
 #if !defined(CLIENT_H)
 #define CLIENT_H
 
+#define ASIO_STANDALONE
+
+#include "asio.hpp"
+// memory movement
+#include "asio/ts/buffer.hpp"
+// network comms
+#include "asio/ts/internet.hpp"
+
 #include "general.h"
 #include "queue.h"
 

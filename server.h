@@ -1,6 +1,14 @@
 #if !defined(SERVER_H)
 #define SERVER_H
 
+#define ASIO_STANDALONE
+
+#include "asio.hpp"
+// memory movement
+#include "asio/ts/buffer.hpp"
+// network comms
+#include "asio/ts/internet.hpp"
+
 #include "general.h"
 #include "queue.h"
 
@@ -9,48 +17,57 @@ class Client;
 
 class Server
 {
+    bool connected{false};
     std::vector<asio::ip::tcp::socket> clients;
 
     // order of declaration is important -- it is also the order of initialization
 	asio::io_context asioCon; // shared amongst all clients
-	std::thread thContext;
+    asio::io_context::work someWork{asioCon};
+
+	std::thread thContext = std::thread(
+        [&] ()
+        {
+            asioCon.run();
+        }
+    );
 			
 	// these things need an asio context --> gets sockets of connected clients
 	asio::ip::tcp::acceptor acp;
 
     public:
 
-    Server() : acp{asioCon, asio::ip::tcp::endpoint(asio::ip::tcp::v4(), 10000)}, thContext{ [&] () {
-                asioCon.run();
-            }}
+    Server() : acp(asioCon, asio::ip::tcp::endpoint(asio::ip::tcp::v4(), 10000))
     {
+        
         // intializer with list initialization
     }
 
     void AcceptConnections()
     {
+        std::cout << "got here.\n";
+
         acp.async_accept(
             [this] (asio::error_code error, asio::ip::tcp::socket socket)
             {
-                std::cout << "got here.\n";
                 if (!error)
-                { // if no errors found
-                    std::cout << "connected to client!\n";
+                {
+                    std::cout << "connected! " << socket.remote_endpoint() << '\n';
+                    connected = true;
                 }
                 else
                 {
-                    std::cout << "error connecting with client...see below\n";
-                    std::cout << error.message() << '\n';
+                    std::cout << "couldn't connect " << error.message() << '\n'; 
                 }
-                std::cout << "got here.\n";
-                AcceptConnections(); // async-recursively call the function again
+
+                AcceptConnections();
             }
         );
+        
     }
 
     bool Connected()
     {
-        return clients.size() > 0;
+        return connected;
     }
 
     // void MsgClient(std::string msg)
@@ -65,9 +82,10 @@ class Server
     // }
 
     virtual ~Server() {
-        acp.close();
+        
         asioCon.stop();
-        thContext.join();
+        acp.close();
+        // thContext.join();
     };
 
 };
