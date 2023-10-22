@@ -15,16 +15,24 @@ int main()
 {
     std::cout << "Client started.\n";
     Client c;
-    
+
     if (c.Connect())
     {
+        c.Reading();
         std::cout << "Connected to the server" << std::endl;
+        
         // Implement message sending and receiving logic here
     }
     else
     {
         std::cout << "Didn't connect.\n";
     }
+
+    // using namespace std::chrono_literals;
+    // std::this_thread::sleep_for(10000ms);
+
+
+
     std::cin.get();
     return 0;
 }

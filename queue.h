@@ -1,3 +1,6 @@
+#if !defined(QUEUE_H)
+#define QUEUE_H
+
 #include <string_view>
 #include <deque>
 #include <mutex>
@@ -72,3 +75,5 @@ class NetQueue
         }
 
 };
+
+#endif

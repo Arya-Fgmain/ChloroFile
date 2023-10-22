@@ -19,9 +19,14 @@ int main()
     std::this_thread::sleep_for(10000ms);
 
     if (s.Connected())
+    {
         std::cout << "connected!\n";
+        s.MsgClient(0, "Hello!");
+    }
     else
+    {
         std::cout << "not connected\n";
+    }
 
     std::cin.get();
     return 0;

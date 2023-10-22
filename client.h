@@ -14,10 +14,20 @@
 
 class Client
 {
-    NetQueue queue;
+
+    public:
 
     asio::error_code ec;
     asio::io_context context;
+
+    asio::io_context::work someWork{context};
+    std::thread thContext = std::thread(
+        [&] ()
+        {
+            context.run();
+        }
+    );
+
     asio::ip::tcp::socket socket;
 
     asio::ip::tcp::endpoint endpoint;
@@ -50,14 +60,35 @@ class Client
         }
     }
 
-    void addMsg(std::string item)
+    void Reading()
     {
-        queue.push_back(item);
-    }
+        std::vector<char> message(5 * 1024);
 
-    std::string readMsg(std::string item)
-    {
-        return queue.pop_front();
+        std::cout << "reading begun\n";
+        socket.async_read_some(
+            asio::buffer(message.data(), message.size()),
+            [&] (asio::error_code ec, std::size_t bytesRead) {
+                if (!ec)
+                {
+                    std::cout << bytesRead << " bytes read\n";
+                    for (char c : message)
+                        std::cout << c;
+                    std::cout << '\n';
+
+                    Reading();
+                    
+                }
+                else if (ec == asio::error::eof)
+                {
+                    std::cout << "connection closed by server.\n";
+                    
+                }
+                else
+                {
+                    std::cout << "error reading " << ec.message() << '\n';
+                }                
+            }
+        );
     }
 
     // void KeepUpdating()
@@ -71,6 +102,7 @@ class Client
     virtual ~Client() {
         socket.close();
         context.stop();
+        thContext.join();
     }
 
 };
