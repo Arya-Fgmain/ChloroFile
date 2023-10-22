@@ -14,11 +14,38 @@ header {
     color: #fff;
     text-align: center;
     padding: 50px 0;
+    animation: wave 3s infinite linear;
 }
 
 main {
     text-align: center;
     margin: 20px;
+}
+
+@keyframes move_wave {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+svg {
+    position: absolute;
+    bottom: 0;
+    width: 200%;
+    height: auto;
+    pointer-events: none;
+}
+
+svg path:nth-child(1) {
+    animation: move_wave 10s linear infinite;
+}
+
+svg path:nth-child(2) {
+    animation: move_wave 10s linear infinite;
+    animation-delay: 5s;
 }
 
 h1 {
