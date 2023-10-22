@@ -9,16 +9,22 @@
 // network comms
 #include "asio/ts/internet.hpp"
 
+
 #include "general.h"
 #include "queue.h"
 
-// forward-declare client class for now
-class Client;
+// to store the clients and their respective IDs (to use later)
+struct cliSocket {
+    int index;
+    asio::ip::tcp::socket &socket;
+};
+
 
 class Server
 {
-    bool connected{false};
-    std::vector<asio::ip::tcp::socket> clients;
+    // bool connected{false};
+    int index{0};
+    std::vector<cliSocket> clients;
 
     // order of declaration is important -- it is also the order of initialization
 	asio::io_context asioCon; // shared amongst all clients
@@ -44,7 +50,6 @@ class Server
 
     void AcceptConnections()
     {
-        std::cout << "got here.\n";
 
         acp.async_accept(
             [this] (asio::error_code error, asio::ip::tcp::socket socket)
@@ -52,7 +57,9 @@ class Server
                 if (!error)
                 {
                     std::cout << "connected! " << socket.remote_endpoint() << '\n';
-                    connected = true;
+                    cliSocket newSock{index++, socket};
+                    clients.push_back(newSock);
+                    // connected = true;
                 }
                 else
                 {
@@ -67,13 +74,16 @@ class Server
 
     bool Connected()
     {
-        return connected;
+        return clients.size() > 0;
     }
 
-    // void MsgClient(std::string msg)
-    // {
-    //     client.push_front(msg);
-    // }
+    void MsgClient(int id, std::string msg)
+    {
+        if (id >= 0 && id < clients.size())
+        {
+            clients[id].addMsg(msg);
+        }
+    }
 
     // void Broadcast()
     // {
@@ -85,7 +95,7 @@ class Server
         
         asioCon.stop();
         acp.close();
-        // thContext.join();
+        thContext.join();
     };
 
 };

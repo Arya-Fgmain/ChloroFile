@@ -8,9 +8,10 @@
 </head>
 <body>
     <header>
-        <h1>Access another myProj</h1>
+        <h1>Access another myChloro</h1>
     </header>
     <main>
+    <!--
     <form action="connect.php" method="post">
         <br>
         <label for="ip">Enter an IP Address:</label>
@@ -18,9 +19,17 @@
         <br><br>
         <input type="submit" value="Connect">
     </form>
+    -->
+    <form id="ipForm">
+        <br>
+        <label for="ip">Enter an IP Address:</label>
+        <input type="text" id="ip" name="ip" required onchange="runCppExecutable()">
+        <br><br>
+        <input type="submit" value="Connect">
+    </form>
 </main>
 <footer>
-    <p>&copy; 2023 ProjTeam</p>
+    <p>&copy; 2023 ChloroFile Team</p>
 </footer>
 </body>
 </html>
