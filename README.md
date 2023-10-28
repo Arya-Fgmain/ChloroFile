@@ -25,6 +25,15 @@ To get started with ChloroFile, you can either access another myChloro or log in
 
    Needs CMake and Boost Asio / Regular Asio.
 
+## Backend setup guide
+
+- __System requirements:__ It is recommended that you use __Linux, MacOS or other Unix-based systems__
+- <a href="https://gcc.gnu.org/install/"> __GCC__ </a>
+- __CMake__: CMake is required for running the backend of this project, try <a href="https://cmake.org/download/">this link</a> or install it via system-based package managers <a href="https://cgold.readthedocs.io/en/latest/first-step/installation.html">here</a>
+- In the main project folder, first run "chmod +x *.sh" to give all the shell script files execution permissions
+- Once done, run "./configure.sh && ./build.sh" to configure CMake and build the project. The compiled executables will be available in out/build.
+- Run the out/build/server file "./out/build/server" and the out/build/client file "./out/build/client." After 10 seconds, you should see the server and client printing a connection message in the terminal. 
+
 ## Authors
 
 <b> Arya Faghihy </b>
