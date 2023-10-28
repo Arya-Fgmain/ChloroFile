@@ -33,6 +33,7 @@ To get started with ChloroFile, you can either access another myChloro or log in
 - Once done, run <code> ./configure.sh && ./build.sh </code> to configure CMake and build the project. The compiled executables will be available in out/build.
 - Run the out/build/server file <code>./out/build/server</code> and the out/build/client file <code>./out/build/client.</code> 
 - After initiating the server & client you should see messages "Server started." and "Client started." After 10 seconds, you should see the server and client printing a connection message in the terminal with the specified IP and port number. 
+- __Note__: if you need to clean the build, run <code>./clean.sh</code>; if you want to re-build the solution, run <code>./rebuild.sh</code>
 
 ## Authors
 
