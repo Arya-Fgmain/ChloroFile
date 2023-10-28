@@ -27,12 +27,12 @@ To get started with ChloroFile, you can either access another myChloro or log in
 
 ## Backend setup guide
 
-- __System requirements:__ It is recommended that you use __Linux, MacOS or other Unix-based systems__
-- <a href="https://gcc.gnu.org/install/"> __GCC__ </a>
-- __CMake__: CMake is required for running the backend of this project, try <a href="https://cmake.org/download/">this link</a> or install it via system-based package managers <a href="https://cgold.readthedocs.io/en/latest/first-step/installation.html">here</a>
-- In the main project folder, first run "chmod +x *.sh" to give all the shell script files execution permissions
-- Once done, run "./configure.sh && ./build.sh" to configure CMake and build the project. The compiled executables will be available in out/build.
-- Run the out/build/server file "./out/build/server" and the out/build/client file "./out/build/client." After 10 seconds, you should see the server and client printing a connection message in the terminal. 
+- __System requirements:__ It is recommended that you use __Linux, MacOS or other Unix-based systems__, with <a href="https://gcc.gnu.org/install/"> __GCC__ </a>
+- (Important) __CMake__: CMake is required for running the backend of this project, try <a href="https://cmake.org/download/">this link</a> or install it via system-based package managers <a href="https://cgold.readthedocs.io/en/latest/first-step/installation.html">here</a>
+- In the main project folder, first run <code>chmod +x *.sh</code> to give all the shell script files execution permissions
+- Once done, run <code> ./configure.sh && ./build.sh </code> to configure CMake and build the project. The compiled executables will be available in out/build.
+- Run the out/build/server file <code>./out/build/server</code> and the out/build/client file <code>./out/build/client.</code> 
+- After initiating the server & client you should see messages "Server started." and "Client started." After 10 seconds, you should see the server and client printing a connection message in the terminal with the specified IP and port number. 
 
 ## Authors
 
@@ -42,7 +42,7 @@ To get started with ChloroFile, you can either access another myChloro or log in
 
 ## Built With
 
-- C++
+- C++ (& CMake)
 - HTML
 - CSS
 - JavaScript
