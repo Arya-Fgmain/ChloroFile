@@ -47,7 +47,8 @@ This project is licensed under the MIT License.
 
 ## Acknowledgments
 
-- [Fall Hacks 2023](https://www.eventbrite.ca/e/fall-hacks-2023-tickets-735239048787?aff=oddtdtcreator)
+[Fall Hacks 2023](https://www.eventbrite.ca/e/fall-hacks-2023-tickets-735239048787?aff=oddtdtcreator)\
+Winner of the ***Niche Prize***!
 
 ## Contact
 
