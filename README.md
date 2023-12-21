@@ -1,11 +1,11 @@
 # ChloroFile
 <img src="website/img/fileleaf.png" alt="Your Image" width="150" height="200" />
 
-Welcome to <i> ChloroFile</i>, a simple way to share files with people by exposing your vulnerable IP address for the world to see (patent pending). ChloroFile allows you to manage your files and share them seamlessly (real).
+Welcome to [<i> ChloroFile</i>](https://htmlpreview.github.io/?https://github.com/Arya-Fgmain/ChloroFile/blob/main/website/index.html), a simple way to share files with people by exposing your vulnerable IP address for the world to see (patent pending). ChloroFile allows you to manage your files and share them seamlessly (real and functional).
 
 ## Getting Started
 
-To get started with ChloroFile, you can either access another myChloro or log into your own myChloro.
+Get started with ChloroFile by clicking the link above. You can either access another myChloro or log into your own myChloro.
 
 - **Access Another myChloro:** If you want to access files shared by others, click on "Access another myChloro" and enter the required IP address.
 
@@ -13,15 +13,14 @@ To get started with ChloroFile, you can either access another myChloro or log in
 
 ## Features
 
-- **Drag-and-Drop Stickers:** You can add stickers to your ChloroFile by dragging and dropping them anywhere on the screen.
-
 - **File Management:** Easily manage your files by adding, removing, and organizing them.
+- **Drag-and-Drop Sticker:** Toss the leaf guy around.
 
 ## How to Use
 
 1. Open your ChloroFile.
 2. Click on "Add" to add new files or drag-and-drop stickers on the screen.
-3. To access files shared by others, click "Access another myChloro" and enter the IP address.
+3. To access files shared by others, click "Access another myChloro" and enter the IP address. (WORKS!!!)
 
    Needs CMake and Boost Asio / Regular Asio.
 
@@ -35,12 +34,6 @@ To get started with ChloroFile, you can either access another myChloro or log in
 - After initiating the server & client you should see messages "Server started." and "Client started." After 10 seconds, you should see the server and client printing a connection message in the terminal with the specified IP and port number. 
 - __Note__: if you need to clean the build, run <code>./clean.sh</code>; if you want to re-build the solution, run <code>./rebuild.sh</code>
 
-## Authors
-
-<b> Arya Faghihy </b>
-
-<b> Saarang Anand </b>
-
 ## Built With
 
 - C++ (& CMake)
@@ -50,7 +43,7 @@ To get started with ChloroFile, you can either access another myChloro or log in
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
 
 ## Acknowledgments
 
@@ -60,8 +53,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 For any inquiries or support, feel free to contact the authors:
 
-- [Arya Faghihy on GitHub](https://github.com/Arya-Fgmain)
-- [Saarang Anand on GitHub](https://github.com/saaranganand)
+- [Arya Faghihy](https://github.com/Arya-Fgmain)
+- [Saarang Anand](https://github.com/saaranganand)
 
 Enjoy using ChloroFile!
 
